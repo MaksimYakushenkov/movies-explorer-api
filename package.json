@@ -7,7 +7,7 @@
     "start": "node app.js",
     "lint": "npx eslint .",
     "dev": "set process.env.NODE_ENV !== 'production' && nodemon app.js",
-    "deploy-server": "scp -r ./* maxim@51.250.2.131:/home/maxim/express-mesto-gha"
+    "deploy-server": "scp -r ./* maxim@62.84.122.239:/home/maxim/movies-explorer-api"
   },
   "keywords": [],
   "author": "Maxim Yakushenkov",

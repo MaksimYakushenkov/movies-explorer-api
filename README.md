@@ -1,5 +1,5 @@
 # Дипмломный проект
-
+## Подключиться к backend`у проекта можно по ссылке -> [api.diplomayakushenkovm.nomoredomains.sbs](https://api.diplomayakushenkovm.nomoredomains.sbs)
 
 
 ## Директории
