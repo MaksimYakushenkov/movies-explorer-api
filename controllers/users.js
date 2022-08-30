@@ -73,6 +73,9 @@ module.exports.updateUser = (req, res, next) => {
       if (err.name === 'ValidationError') {
         return next(new BadRequestError('Переданы некорректные данные!'));
       }
+      if (err.codeName === 'DuplicateKey') {
+        return next(new ConflictError('Данный Email принадлежит другому пользователю!'));
+      }
       return next(err);
     });
 };

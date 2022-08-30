@@ -1,42 +1,33 @@
 const mongoose = require('mongoose');
+const regularUrl = require('../utils/regular/regularUrl');
 
 const movieSchema = new mongoose.Schema({
   country: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 30,
   },
   director: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 30,
   },
   duration: {
-    type: String,
+    type: Number,
     required: true,
-    minlength: 2,
-    maxlength: 30,
   },
   year: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 30,
   },
   description: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 30,
   },
   trailerLink: {
     type: String,
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[www.]?\S*#?/i.test(v);
+        return regularUrl.test(v);
       },
       message: 'Ссылка не прошла валидацию. Неверный формат.',
     },
@@ -46,7 +37,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[www.]?\S*#?/i.test(v);
+        return regularUrl.test(v);
       },
       message: 'Ссылка не прошла валидацию. Неверный формат.',
     },
@@ -56,7 +47,7 @@ const movieSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator(v) {
-        return /^https?:\/\/[www.]?\S*#?/i.test(v);
+        return regularUrl.test(v);
       },
       message: 'Ссылка не прошла валидацию. Неверный формат.',
     },
@@ -67,20 +58,16 @@ const movieSchema = new mongoose.Schema({
     required: true,
   },
   movieId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Number,
     required: true,
   },
   nameRU: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 30,
   },
   nameEN: {
     type: String,
     required: true,
-    minlength: 2,
-    maxlength: 30,
   },
 });
 
