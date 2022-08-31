@@ -1,3 +1,4 @@
+const severError = 'На сервере произошла ошибка';
 const emailIsUsed = 'Пользователь с таким Email уже зарегистрирован!';
 const emailIsUsedOtherUser = 'Данный Email принадлежит другому пользователю!';
 const invalidProperties = 'Переданы некорректные данные!';
@@ -20,4 +21,5 @@ module.exports = {
   needAuthorize,
   invalidMailPass,
   movieIsDeleted,
+  severError,
 };
