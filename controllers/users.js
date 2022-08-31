@@ -1,8 +1,9 @@
 const bcrypt = require('bcryptjs'); // импортируем bcrypt для хеширования пароля
 const jwt = require('jsonwebtoken'); // импортируем jwt
 const User = require('../models/user');
-const BadRequestError = require('../utils/errors/bad-request-err');
-const ConflictError = require('../utils/errors/conflict-err');
+const { BadRequestError } = require('../utils/errors/bad-request-err');
+const { ConflictError } = require('../utils/errors/conflict-err');
+const { invalidProperties, emailIsUsed, emailIsUsedOtherUser } = require('../utils/errors/constantsError');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
 
@@ -49,10 +50,10 @@ module.exports.createUser = (req, res, next) => {
     }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return next(new BadRequestError('Переданы некорректные данные!'));
+        return next(new BadRequestError(invalidProperties));
       }
       if (err.code === 11000) {
-        return next(new ConflictError('Пользователь с таким Email уже зарегистрирован!'));
+        return next(new ConflictError(emailIsUsed));
       }
       return next(err);
     });
@@ -71,10 +72,10 @@ module.exports.updateUser = (req, res, next) => {
     .then((user) => res.send({ name: user.name, email: user.email }))
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return next(new BadRequestError('Переданы некорректные данные!'));
+        return next(new BadRequestError(invalidProperties));
       }
       if (err.codeName === 'DuplicateKey') {
-        return next(new ConflictError('Данный Email принадлежит другому пользователю!'));
+        return next(new ConflictError(emailIsUsedOtherUser));
       }
       return next(err);
     });

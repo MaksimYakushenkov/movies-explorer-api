@@ -5,4 +5,4 @@ class AuthorizedButForbidden extends Error {
   }
 }
 
-module.exports = AuthorizedButForbidden;
+module.exports = { AuthorizedButForbidden };
