@@ -2,6 +2,9 @@
 const allowedCors = [
   'http://diplomayakushenkovm.nomoredomains.sbs',
   'https://diplomayakushenkovm.nomoredomains.sbs',
+  'localhost:3000',
+  'http://localhost:3000',
+  'https://localhost:3000',
 ];
 
 const corsRules = (req, res, next) => {
